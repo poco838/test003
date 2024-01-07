@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+
+    <!-- 9、映射器：指定映射文件或者映射类 -->
+    <mapper namespace="com.poco.test003.mapper.UserMapper">
+        <update id="update">
+            update user
+            <set>
+                <if test="username !=null">
+                      username= #{username},
+                </if>
+
+                <if test="nickname !=null">
+                    nickname= #{nickname},
+                </if>
+                <if test="email !=null">
+                    email= #{email}
+                </if>
+            </set>
+            <where>
+               id =#{id}
+            </where>
+          </update>
+      </mapper>
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+
+<!-- 9、映射器：指定映射文件或者映射类 -->
+<mapper namespace="com.poco.test003.mapper.TestCaseMapper">
+    <update id="updatecase">
+        update testcase
+        <set>
+            <if test="testcaseid !=null">
+                testcaseid= #{testcaseid},
+            </if>
+
+            <if test="testcasename !=null">
+                testcasename= #{testcasename},
+            </if>
+            <if test="testcasemodule !=null">
+                testcasemodule= #{testcasemodule},
+            </if>
+            <if test="testcaserunstep !=null">
+                testcaserunstep= #{testcaserunstep},
+            </if>
+            <if test="testcaseexpectedresult !=null">
+                testcaseexpectedresult= #{testcaseexpectedresult},
+            </if>
+            <if test="testcaserunresult !=null">
+                testcaserunresult= #{testcaserunresult},
+            </if>
+            <if test="testcaseactualresult !=null">
+                testcaseactualresult= #{testcaseactualresult}
+            </if>
+
+        </set>
+        <where>
+            testcaseid =#{testcaseid}
+        </where>
+    </update>
+    <delete id="deleteByIds">
+        DELETE FROM testcase
+        WHERE testcaseid IN
+        <foreach collection="testcaseids" item="testcaseid" open="(" separator="," close=")">
+            #{testcaseid}
+        </foreach>
+    </delete>
+</mapper>
+

@@ -1,0 +1,22 @@
+server:
+  port: 9091
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=GMT%2b8
+    username: test
+    password: aaamysql1404
+    thymeleaf:
+      #缓存关闭
+      cache: false
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    settings:
+        logImpl: LOG4J2
+
+
